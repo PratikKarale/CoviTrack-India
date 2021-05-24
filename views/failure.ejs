@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  
+</head>
+<body style="background-color: #e9ecef;">
+  <div class="jumbotron text-center">
+    <h1 class="">FAILED<span style="color: rgb(153, 0, 0);">!</span></h1>
+    <p class="lead"><strong>There was problem getting <span style="color: purple;">weather data.</span></strong></p>
+    <p style="text-decoration: underline;">Please enter a valid city name.</p>
+    <hr style="background-color: darkgoldenrod;">
+    
+    <form action="/failure" method="POST">
+      <button class="btn btn-lg btn-warning">Try Again</button>
+    </form>
+  </div>
+</body>
+</html>

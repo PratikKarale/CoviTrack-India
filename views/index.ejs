@@ -1,0 +1,108 @@
+<%- include('partials/header') -%> 
+
+  <nav class="navbar sticky-top flex-md-nowrap p-0">
+    <p class="navbar-brand" >CoviTrack <span>INDIA</span></p>
+    <form action="/" method="POST">
+      <input class="searchInput form-control bg-dark w-100" name="districtInput" type="text" placeholder="Search"
+        aria-label="Search">
+    </form>
+  </nav>
+
+
+  <div class="container-fluid">
+      <main role="main" class=" col-sm-12 ml-sm-auto col pt-3 px-4">
+        <h1 class="font-weight-bolder">India</h1>
+        <hr>
+        <div class="row h-auto m-2">
+          <div class="col-md-6 border-right">
+            <h4 class="text-center">Cases</h4>
+            <h6>Confirmed</h6>
+            <h2 class="data-text"><%=totalConfirmedEJS%><span class="new-cases"> +<%=dailyConfirmedEJS%> new</span></h2>
+            <hr>
+            <h6>Recovered</h6>
+            <h2 class="data-text"><%=totalRecoveredEJS%></h2>
+            <hr>
+            <h6>Deaths</h6>
+            <h2 class="data-text"><%=totalDeathsEJS%></h2>
+          </div>
+          <div class="col-md-6">
+            <h4 class="text-center">Vaccination</h4>
+            <h6>First Dose</h6>
+            <h2 class="data-text"><%=firstDoseEJS%></h2>
+            <hr>
+            <h6>Fully Vaccinated</h6>
+            <h2 class="data-text"><%=fullyVaccinatedEJS%></h2>
+            <hr>
+            <h6>% Fully vaccinated</h6>
+            <h2 class="data-text"><%=percentageFullyVaccinatedEJS%>%</h2>
+            <p class="m-0 text-lg-right"> Timestamp Updated <span>05/22/2021 09:00 PMIST</span></p>
+          </div>
+        </div>
+        <hr class="break-line-strong">
+
+        <canvas id="myChart" width="800" height="400"></canvas>
+
+        <h2>Section title</h2>
+        <div class="table-responsive">
+          <table class="table table-striped table-sm">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Header</th>
+                <th>Header</th>
+                <th>Header</th>
+                <th>Header</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1,003</td>
+                <td>libero</td>
+                <td>Sed</td>
+                <td>cursus</td>
+                <td>ante</td>
+              </tr>
+              <tr>
+                <td>1,004</td>
+                <td>dapibus</td>
+                <td>diam</td>
+                <td>Sed</td>
+                <td>nisi</td>
+              </tr>
+              <tr>
+                <td>1,005</td>
+                <td>Nulla</td>
+                <td>quis</td>
+                <td>sem</td>
+                <td>at</td>
+              </tr>
+              <tr>
+                <td>1,006</td>
+                <td>nibh</td>
+                <td>elementum</td>
+                <td>imperdiet</td>
+                <td>Duis</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </main>
+  </div>
+
+    <!-- data from covid19india api cannot be sent to chart.js so we'll transfer that data here, 
+      and hide it, but we'll still be able to get this data in chart.js and make a graph out of it -->
+    <% for(var i=0; i < monthData.length; i++) { %>
+      <p class="monthData" style="display: none;">
+        <%= monthData[i] %>
+      </p>
+    <% } %>
+  
+    <% for(var i=0; i < monthDates.length; i++) { %>
+      <p class="monthDates" style="display: none;">
+        <%= monthDates[i] %>
+      </p>
+     <% } %>
+
+
+<%- include('partials/footer') -%> 
+
