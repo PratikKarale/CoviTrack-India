@@ -97,7 +97,7 @@ td{
 
 @media (max-width: 800px) {
   .container-fluid{
-    margin-top: 3%;
+    margin-top: 1%;
     padding-inline: 3%;
   }
 }
