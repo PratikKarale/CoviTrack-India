@@ -71,13 +71,14 @@ body {
 
 @media (max-width : 580px) {
   .stateSelect{
-    margin-left: 3%;
+    margin-left: 4px;
   }
 
   form button{
-    margin-top: 2%;
-    margin-left: 3%;
+    margin-top: 5px;
+    margin-left: 4px;
   }
+
 }
 
 th{
@@ -97,7 +98,7 @@ td{
 
 @media (max-width: 800px) {
   .container-fluid{
-    /* margin-top: 1%; */
+    margin-top: 2%;
     padding-inline: 3%;
   }
 }
