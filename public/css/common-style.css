@@ -69,6 +69,17 @@ body {
   text-align: justify;
 }
 
+@media (max-width : 580px) {
+  .stateSelect{
+    margin-left: 3%;
+  }
+
+  form button{
+    margin-top: 2%;
+    margin-left: 3%;
+  }
+}
+
 th{
   text-align: center;
 }
@@ -80,5 +91,18 @@ td{
 .states-heading{
   color: rgba(175, 47, 0, 0.87);
   font-weight: bolder;
-  font-size: 2.8rem;
+  font-size: 2rem;
+}
+
+
+@media (max-width: 800px) {
+  .container-fluid{
+    margin-top: 3%;
+    padding-inline: 3%;
+  }
+}
+
+.break-line-strong{
+  border: 0.2px solid rgba(128, 128, 128, 0.418);
+  box-shadow: 0 0 0.1px 0.1px;
 }

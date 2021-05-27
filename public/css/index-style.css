@@ -16,11 +16,6 @@ canvas{
 }
 
 
-.break-line-strong{
-  border: 0.2px solid rgba(128, 128, 128, 0.418);
-  box-shadow: 0 0 0.1px 0.1px;
-}
-
 .searchInput{
   color: white;
 }
@@ -59,9 +54,3 @@ canvas{
   padding-inline: 15%;
 } 
 
-
-@media (max-width: 800px) {
-  .container-fluid{
-    padding-inline: 3%;
-  }
-}
