@@ -1,48 +1,71 @@
 <%- include('partials/resultHeader') -%> 
 
-  <nav class="navbar sticky-top flex-md-nowrap p-0">
-    <p class="navbar-brand" style="font-weight:900; color: aliceblue;">CoviTrack <span style="background-image: linear-gradient(#314755, #26a0da); padding: 1%; border-radius: 4px; ">INDIA</span></p>
-    <form action="/" method="POST">
-      <input class="form-control form-control-dark bg-dark w-100" name="districtInput" type="text" placeholder="Search"
-        aria-label="Search">
+  <nav class="navbar flex-md-nowrap p-0">
+    <p class="navbar-brand" >CoviTrack <span>INDIA</span></p>
+    <form action="/" method="POST" class="form-inline">
+
+      <select name="stateSelect" id="stateSelect" class="btn btn-outline-dark stateSelect mr-2" >
+        <option value="" >Select state</option>
+      </select>
+
+      <select name="districtSelect" id="districtSelect" class="btn btn-outline-dark districtSelect mr-2">
+        <option value="">Select state first</option>
+      </select>
+
+      <button class="btn btn-outline-info mr-2"><i class="fas fa-search mr-2"></i>search</button>
     </form>
   </nav>
 
 
   <div class="container-fluid">
-      <main role="main" class="ml-sm-auto col-lg-12 pt-3 px-4">
-        <div class="text-center col-sm-6 col-lg-12 m-sm-auto">
-          <h1 class="font-weight-bolder mb-4">
-            <% if(districtEJS == "err" ){ %>
-              <h3 class="m-5" style="color: red;  text-decoration: underline;">Sorry, we can't find data for that region :(</h3>
-            <% }else{ %>
-              <%= districtEJS %>
-            <% } %>
-          </h1>
+      <main role="main" class="m-md-5">
+
+        <div class="text-center">
+
+          <% if(districtEJS == "Unknown") {%>
+            <% if(stateEJS == "AN") {%>
+              <h1 class="font-weight-bolder mb-1">Andaman and Nicobar<span class="state">, <%= stateEJS %> </span> </h1>
+            <% }else if(stateEJS == "GA") {%>
+              <h1 class="font-weight-bolder mb-1">Goa<span class="state">, <%= stateEJS %> </span> </h1>
+            <% }else if(stateEJS == "AS"){ %>
+              <h1 class="font-weight-bolder mb-1">Assam<span class="state">, <%= stateEJS %> </span> </h1>
+            <% }else if(stateEJS == "MN"){ %>
+              <h1 class="font-weight-bolder mb-1">Manipur<span class="state">, <%= stateEJS %> </span> </h1>
+            <% }else if(stateEJS == "SK"){%>
+              <h1 class="font-weight-bolder mb-1">Sikkim<span class="state">, <%= stateEJS %> </span> </h1>
+            <% }else if(stateEJS == "TG"){ %>  
+              <h1 class="font-weight-bolder mb-1">Telangana<span class="state">, <%= stateEJS %> </span> </h1>
+            <% } %> 
+          <% }else{ %> 
+            <h1 class="font-weight-bolder mb-1"><%= districtEJS %><span class="state">, <%= stateEJS %> </span> </h1>
+          <% } %> 
+
+          <p class="population">POPULATION: <%= populationEJS %>  </p> 
+
           <hr class="mb-4">
           <div class="data-section row">
-            <div class="col-lg-3 active-cases">
-              <h6 style="color: rgb(255, 255, 255);">Active</h6>
+            <div class="col-lg-3 mb-4 mt-2 active-cases data-box">
+              <h6>Active</h6>
               <p class="">
                 <%= activeEJS %>
               </p>
             </div>  
             <hr>
-            <div class="col-lg-3 confirmed">
-              <h6 style="color: rgb(255, 255, 255);">Confirmed</h6>
+            <div class="col-lg-3 mb-4 mt-2 confirmed data-box ">
+              <h6>Confirmed</h6>
               <p class="">
                 <%= confirmedEJS %>
               </p>
             </div>
             <hr>
-            <div class="col-lg-3 deaths">
-              <h6 style="color:rgb(255, 255, 255);"> Deaths </h6>
+            <div class="col-lg-3 mb-4 mt-2 deaths data-box ">
+              <h6> Deaths </h6>
               <p class="">
-                <%= deathsEJS %>
+                <%= deathsEJS %> 
               </p>
             </div>
           </div>
-          <p style="font-size: 0.5rem; margin-top: 2%;"> Timestamp Updated <span>05/22/2021 09:00 PMIST</span></p>
+          <p class="time-stamp">Source: MOHFW · <a target="_blank" href="https://covid19india.org">Covid19India.org</a></p>
         </div>
 
         <hr class="last">
@@ -52,47 +75,34 @@
           <canvas id="myChart" width="800" height="400"></canvas>
         </div>
 
-        <h2>Section title</h2>
-        <div class="table-responsive">
-          <table class="table table-striped table-sm">
-            <thead>
+        <hr class="break-line-strong">
+        
+        <h2 class="mt-5 mb-4 text-center states-heading">States / Union Territories</h2>
+        <p><div style="width:20px; height:15px; background-color: rgba(255, 0, 0, 0.404); display: inline-block;"></div><span> Top 5 states with <span style="color: rgb(218, 44, 0);">HIGHEST ACTIVE</span> cases</span></p>
+        <p><div style="width:20px; height:15px; background-color: rgba(0, 128, 0, 0.268); display: inline-block;"></div><span> Top 5 states with <span style="color: rgb(0, 110, 0);">LOWEST ACTIVE</span>  cases</span></p>
+        <div class="table-responsive mt-2">
+          <table class="table table-striped table-lg">
+            <thead class="table-dark">
               <tr>
-                <th>#</th>
-                <th>Header</th>
-                <th>Header</th>
-                <th>Header</th>
-                <th>Header</th>
+                <th>State/UT</th>
+                <th>Confirmed</th>
+                <th>Active</th>
+                <th>Recovered</th>
+                <th>Deceased</th>
+                <th class="w-25">Vaccinated</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>1,003</td>
-                <td>libero</td>
-                <td>Sed</td>
-                <td>cursus</td>
-                <td>ante</td>
-              </tr>
-              <tr>
-                <td>1,004</td>
-                <td>dapibus</td>
-                <td>diam</td>
-                <td>Sed</td>
-                <td>nisi</td>
-              </tr>
-              <tr>
-                <td>1,005</td>
-                <td>Nulla</td>
-                <td>quis</td>
-                <td>sem</td>
-                <td>at</td>
-              </tr>
-              <tr>
-                <td>1,006</td>
-                <td>nibh</td>
-                <td>elementum</td>
-                <td>imperdiet</td>
-                <td>Duis</td>
-              </tr>
+              <% for(var i = 0; i<stateNamesEJS.length; i++){ %>
+                <tr>
+                  <td class="stateName"><%= stateNamesEJS[i] %> </td>
+                  <td><%= stateConfirmedEJS[i] %> </td>
+                  <td class="activeCases"><%= stateActiveEJS[i] %> </td>
+                  <td><%= stateRecoveredEJS[i] %> </td>
+                  <td><%= stateDeceasedEJS[i] %> </td>
+                  <td><%= stateVaccinatedEJS[i] %> </td>
+                </tr>
+              <% } %>
             </tbody>
           </table>
         </div>
@@ -112,5 +122,5 @@
         </p>
        <% } %>
 
-<%- include('partials/resultFooter') -%> 
+<%- include('partials/footer') -%> 
 
