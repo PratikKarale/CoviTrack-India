@@ -26,7 +26,7 @@
           <hr class="mb-4">
           <div class="data-section row">
             <div class="col-lg-6 cases data-box">
-              <h3 class="mb-4">Cases</h3>
+              <h3 class="mb-4 box-heading">Cases</h3>
               <h6><span style="color: rgb(255, 166, 0);">●</span> Active</h6>
               <p class="">
                 <%=totalActiveEJS%>
@@ -35,7 +35,7 @@
               <hr>
               <h6><span>●</span> Confirmed</h6>
               <p class="">
-                <%=totalConfirmedEJS%>
+                <%=totalConfirmedEJS%> <span class="daily-confirmed"> <i class="fas fa-arrow-up"></i><%= dailyConfirmedEJS %> </span>
               </p>
 
               <hr>
@@ -52,14 +52,14 @@
 
             </div>  
             <div class="col-lg-6 vaccination data-box">
-              <h3 class="mb-4 ">Vaccination</h3>
-              <h6><span style="color: rgba(0, 132, 255, 0.89);">●</span> First dose <i class="fas fa-syringe"></i></h6>
+              <h3 class="mb-4 box-heading">Vaccination <i class="fas fa-syringe"></i></h3>
+              <h6><span style="color: rgba(0, 132, 255, 0.89);">●</span> First dose </h6>
               <p class="">
                 <%=firstDoseEJS%>
               </p>
               <hr>
 
-              <h6><span style="color: rgba(0, 132, 255, 0.89);">●</span> Fully vaccinated <i class="fas fa-syringe"></i></h6>
+              <h6><span style="color: rgba(0, 132, 255, 0.89);">●</span> Fully vaccinated</h6>
               <p class="">
                 <%=fullyVaccinatedEJS%>
               </p>

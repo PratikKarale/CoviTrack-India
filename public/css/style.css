@@ -167,7 +167,7 @@ h6{
 }
 
 .cases{
-  background-image: linear-gradient(#de6262,#ffb88c);
+  background-image: linear-gradient(rgba(255, 0, 0, 0.342),rgba(255, 0, 0, 0.459));
 }
 
 .vaccination{
@@ -179,15 +179,25 @@ h6{
 }
 
 .container-fluid{
-  padding-inline: 15%;
+  padding-inline: 10%;
 } 
 
 
 @media (max-width: 992px) {
   .container-fluid{
-    padding-inline: 6%;
+    padding-inline: 10%;
   }
 } 
+
+.box-heading{
+  font-weight: 700;
+  color: rgb(36, 32, 32);
+}
+
+.daily-confirmed{
+  font-size: 0.7rem;
+  color: rgba(165, 0, 0, 0.658);
+}
 
 
 
