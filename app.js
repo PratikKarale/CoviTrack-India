@@ -143,9 +143,6 @@ app.post("/", function(req, res){
                 active = (active).toLocaleString();
                 population = Number(population).toLocaleString();
 
-                console.log(active);
-                console.log(deceased);
-
                 res.render('result', {pVaccinatedEJS: pVaccinated, recoveredEJS: recovered, vaccinatedEJS:vaccinated, activeEJS: active, confirmedEJS: confirmed, districtEJS: district, deathsEJS: deceased, monthData: lastMonthData, monthDates: lastMonthDates, stateEJS: state, populationEJS:population, stateConfirmedEJS: stateConfirmed, stateActiveEJS: stateActive, stateRecoveredEJS: stateRecovered, stateTestedEJS:stateTested, stateVaccinatedEJS: stateVaccinated, stateDeceasedEJS: stateDeceased, stateNamesEJS:stateNames})
             })
             
