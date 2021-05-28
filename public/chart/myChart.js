@@ -28,7 +28,7 @@ var myChart = new Chart(ctx, {
         borderColor: "#007bff",
         borderWidth: 2,
         pointBackgroundColor: "#007bff",
-        pointRadius: 1,
+        pointRadius: 3,
         backgroundColor: "#007bff20",
       },
     ],
@@ -40,6 +40,7 @@ var myChart = new Chart(ctx, {
         {
           ticks: {
             beginAtZero: false,
+            maxTicksLimit: 5
           },
         },
       ],

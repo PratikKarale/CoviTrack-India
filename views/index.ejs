@@ -1,62 +1,90 @@
 <%- include('partials/header') -%> 
 
-  <nav class="navbar flex-md-nowrap p-0">
-    <p class="navbar-brand" >CoviTrack <span>INDIA</span></p>
+  <nav class="navbar bg-dark flex-md-nowrap sticky-top p-1">
+    <p class="navbar-brand">Covid Tracker India</p>
     <form action="/" method="POST" class="form-inline">
 
-      <select name="stateSelect" id="stateSelect" class="btn btn-outline-dark stateSelect mr-2" >
+      <select name="stateSelect" id="stateSelect" class="btn btn-light stateSelect mr-2" >
         <option value="" >Select state</option>
       </select>
 
-      <select name="districtSelect" id="districtSelect" class="btn btn-outline-dark districtSelect mr-2">
+      <select name="districtSelect" id="districtSelect" class="btn btn-light districtSelect mr-2">
         <option value="">Select state before district</option>
       </select>
 
-      <button class="btn btn-outline-info mr-2"><i class="fas fa-search mr-2"></i>search</button>
+      <button class="btn pl-3 btn-success mr-2"><i class="fas fa-search mr-2"></i></button>
     </form>
   </nav>
 
-  <div class="container-fluid">
-      <main role="main" class=" col-sm-12 ml-sm-auto pt-3 px-4">
-        <h1 class="font-weight-bolder">India</h1>
-        <hr>
-        <div class="row h-auto m-2">
-          <div class="col-md-6 border-right">
-            <h4 class="text-center">Cases</h4>
-            <h6>Confirmed</h6>
-            <h2 class="data-text"><%=totalConfirmedEJS%><span class="new-cases"> +<%=dailyConfirmedEJS%> new</span></h2>
-            <hr>
-            <h6>Recovered</h6>
-            <h2 class="data-text"><%=totalRecoveredEJS%></h2>
-            <hr>
-            <h6>Deaths</h6>
-            <h2 class="data-text"><%=totalDeathsEJS%></h2>
-          </div>
-          <div class="col-md-6">
-            <h4 class="text-center">Vaccination</h4>
-            <h6>First Dose</h6>
-            <h2 class="data-text"><%=firstDoseEJS%></h2>
-            <hr>
-            <h6>Fully Vaccinated</h6>
-            <h2 class="data-text"><%=fullyVaccinatedEJS%></h2>
-            <hr>
-            <h6>% Fully vaccinated</h6>
-            <h2 class="data-text"><%=percentageFullyVaccinatedEJS%>%</h2>
-          </div>
-          <p class="time-stamp ml-auto">Source: MOHFW · <a target="_blank" href="https://covid19india.org">Covid19India.org</a></p>
-        </div>
-        <hr class="break-line-strong mt-5">
 
-        <div class="mt-5-custom text-center">
-          <h4 class="mb-5 mt-5">Cavid19 graphic representation (India)</h4>
+  <div class="container-fluid">
+      <main role="main" class="m-md-5">
+
+        <div class="text-center">
+          <h1 class="font-weight-bolder text-center india-heading">India</h1>
+          <p class="population">POPULATION: 0  </p> 
+          <hr class="mb-4">
+          <div class="data-section row">
+            <div class="col-lg-6 cases data-box">
+              <h3 class="mb-4">Cases</h3>
+              <h6><span style="color: rgb(255, 166, 0);">●</span> Active</h6>
+              <p class="">
+                <%=totalActiveEJS%>
+              </p>
+
+              <hr>
+              <h6><span>●</span> Confirmed</h6>
+              <p class="">
+                <%=totalConfirmedEJS%>
+              </p>
+
+              <hr>
+              <h6><span style="color: rgba(20, 175, 0, 0.973);">●</span> recovered </h6>
+              <p class="">
+                <%=totalRecoveredEJS%>
+              </p>
+
+              <hr>
+              <h6><span style="color: rgba(255, 0, 0, 0.973);">●</span> Deaths </h6>
+              <p class="">
+                <%=totalDeathsEJS%>
+              </p>
+
+            </div>  
+            <div class="col-lg-6 vaccination data-box">
+              <h3 class="mb-4 ">Vaccination</h3>
+              <h6><span style="color: rgba(0, 132, 255, 0.89);">●</span> First dose <i class="fas fa-syringe"></i></h6>
+              <p class="">
+                <%=firstDoseEJS%>
+              </p>
+              <hr>
+
+              <h6><span style="color: rgba(0, 132, 255, 0.89);">●</span> Fully vaccinated <i class="fas fa-syringe"></i></h6>
+              <p class="">
+                <%=fullyVaccinatedEJS%>
+              </p>
+              <hr>
+
+              <h6><span style="color: rgba(0, 132, 255, 0.89);">●</span>% Fully vaccinated</h6>
+              <p class="">
+                <%=percentageFullyVaccinatedEJS%>%
+              </p>
+              <!-- <hr> -->
+            </div>
+          </div>
+          <p class="source-stamp">Source: MOHFW · <a target="_blank" href="https://covid19india.org">Covid19India.org</a></p>
+        </div>
+
+        <hr class="last">
+
+        <div class="mt-5-custom text-center myChart">
+          <h4 class="mb-5">Covid19 in India - last week graphical representation</h4>
           <canvas id="myChart" width="800" height="400"></canvas>
         </div>
 
         <hr class="break-line-strong mt-5">
         
-        <h2 class="mt-5 mb-2 text-center states-heading">States / Union Territories</h2>
-        <p><div style="width:20px; height:15px; background-color: rgba(255, 0, 0, 0.404); display: inline-block;"></div><span> Top 5 states with <span style="color: rgb(218, 44, 0);">HIGHEST ACTIVE</span> cases</span></p>
-        <p><div style="width:20px; height:15px; background-color: rgba(0, 128, 0, 0.268); display: inline-block;"></div><span> Top 5 states with <span style="color: rgb(0, 110, 0);">LOWEST ACTIVE</span>  cases</span></p>
+        <h2 class="mt-5 mb-4 text-center states-heading">States / Union Territories</h2>
         <div class="table-responsive mt-2">
           <table class="table table-striped table-lg">
             <thead class="table-dark">
@@ -86,19 +114,18 @@
       </main>
   </div>
 
-    <!-- data from covid19india api cannot be sent to chart.js so we'll transfer that data here, 
-      and hide it, but we'll still be able to get this data in chart.js and make a graph out of it -->
-    <% for(var i=0; i < monthData.length; i++) { %>
-      <p class="monthData" style="display: none;">
-        <%= monthData[i] %>
-      </p>
-    <% } %>
-  
-    <% for(var i=0; i < monthDates.length; i++) { %>
-      <p class="monthDates" style="display: none;">
-        <%= monthDates[i] %>
-      </p>
-     <% } %>
+      <!-- hidden data got from app.js and to be transfered to myChart.js to make graph -->
+      <% for(var i=0; i < monthData.length; i++) { %>
+        <p class="monthData" style="display: none;">
+          <%= monthData[i] %>
+        </p>
+      <% } %>
+    
+      <% for(var i=0; i < monthDates.length; i++) { %>
+        <p class="monthDates" style="display: none;">
+          <%= monthDates[i] %>
+        </p>
+       <% } %>
 
 <%- include('partials/footer') -%> 
 

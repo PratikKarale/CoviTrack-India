@@ -13,6 +13,7 @@ const { exit } = require('process');
 const { stat } = require('fs');
 const { ADDRCONFIG } = require('dns');
 const { globalAgent } = require('http');
+const { toASCII } = require('punycode');
 
 const app = express();
 
@@ -73,18 +74,21 @@ app.get("/", function(req, res){
             var totalConfirmed = latestData.totalconfirmed;
             var totalRecovered = latestData.totalrecovered;
             var totalDeaths = latestData.totaldeceased;
+            var totalActive = totalConfirmed - (totalRecovered) -totalDeaths;
             //vaccination data            
             var vaccinationData = data.tested[data.tested.length-1];
             var firstDose = vaccinationData.firstdoseadministered;
             var fullyVaccinated = vaccinationData.seconddoseadministered;
             var percentage = ((fullyVaccinated/1380004385)*100).toFixed(2);
-
+            
             dailyConfirmed = Number(dailyConfirmed).toLocaleString();
             totalConfirmed = Number(totalConfirmed).toLocaleString();
             totalRecovered = Number(totalRecovered).toLocaleString();
             totalDeaths = Number(totalDeaths).toLocaleString();
             firstDose = Number(firstDose).toLocaleString();
             fullyVaccinated = Number(fullyVaccinated).toLocaleString();
+            totalActive = Number(totalActive).toLocaleString();
+            console.log(totalActive);
             
             var tempData  = data.cases_time_series;
             //setting last month data == null (if user searches multiple 
@@ -97,7 +101,7 @@ app.get("/", function(req, res){
                 lastMonthDates.push(tempData[data.cases_time_series.length-i].date);
             }
 
-            res.render("index", {dailyConfirmedEJS: dailyConfirmed, totalConfirmedEJS: totalConfirmed, totalRecoveredEJS: totalRecovered, totalDeathsEJS: totalDeaths, monthData: lastMonthData, monthDates: lastMonthDates, firstDoseEJS: firstDose, fullyVaccinatedEJS: fullyVaccinated, percentageFullyVaccinatedEJS: percentage, stateConfirmedEJS: stateConfirmed, stateActiveEJS: stateActive, stateRecoveredEJS: stateRecovered, stateTestedEJS:stateTested, stateVaccinatedEJS: stateVaccinated, stateDeceasedEJS: stateDeceased, stateNamesEJS:stateNames});
+            res.render("index", {totalActiveEJS:totalActive, dailyConfirmedEJS: dailyConfirmed, totalConfirmedEJS: totalConfirmed, totalRecoveredEJS: totalRecovered, totalDeathsEJS: totalDeaths, monthData: lastMonthData, monthDates: lastMonthDates, firstDoseEJS: firstDose, fullyVaccinatedEJS: fullyVaccinated, percentageFullyVaccinatedEJS: percentage, stateConfirmedEJS: stateConfirmed, stateActiveEJS: stateActive, stateRecoveredEJS: stateRecovered, stateTestedEJS:stateTested, stateVaccinatedEJS: stateVaccinated, stateDeceasedEJS: stateDeceased, stateNamesEJS:stateNames});
 
         })
 
@@ -131,6 +135,7 @@ app.post("/", function(req, res){
                 var active = Number(confirmed) - Number(recovered+deceased);
                 var population = data[state].districts[district].meta.population;
                 
+                var pVaccinated = ((vaccinated/population)*100).toFixed(2);
                 confirmed = Number(confirmed).toLocaleString();
                 recovered = Number(recovered).toLocaleString();
                 vaccinated = Number(vaccinated).toLocaleString();
@@ -141,7 +146,7 @@ app.post("/", function(req, res){
                 console.log(active);
                 console.log(deceased);
 
-                res.render('result', {activeEJS: active, confirmedEJS: confirmed, districtEJS: district, deathsEJS: deceased, monthData: lastMonthData, monthDates: lastMonthDates, stateEJS: state, populationEJS:population, stateConfirmedEJS: stateConfirmed, stateActiveEJS: stateActive, stateRecoveredEJS: stateRecovered, stateTestedEJS:stateTested, stateVaccinatedEJS: stateVaccinated, stateDeceasedEJS: stateDeceased, stateNamesEJS:stateNames})
+                res.render('result', {pVaccinatedEJS: pVaccinated, recoveredEJS: recovered, vaccinatedEJS:vaccinated, activeEJS: active, confirmedEJS: confirmed, districtEJS: district, deathsEJS: deceased, monthData: lastMonthData, monthDates: lastMonthDates, stateEJS: state, populationEJS:population, stateConfirmedEJS: stateConfirmed, stateActiveEJS: stateActive, stateRecoveredEJS: stateRecovered, stateTestedEJS:stateTested, stateVaccinatedEJS: stateVaccinated, stateDeceasedEJS: stateDeceased, stateNamesEJS:stateNames})
             })
             
         });
@@ -161,7 +166,6 @@ app.get("/failure", function(req, res){
 app.post("/failure", function(req, res){
     res.redirect("/");
 })
-
 
 app.listen(process.env.PORT||3000, function(){
     console.log("server is running on 3000");

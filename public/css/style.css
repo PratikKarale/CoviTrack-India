@@ -1,0 +1,194 @@
+body {
+  font-size: .875rem;
+}
+
+.navbar-brand{
+  color: aliceblue;
+  font-weight: 700;
+  padding-top: 1%;
+  margin-left: 2%;
+}
+
+.source-stamp{
+  font-size: 0.7rem; 
+  margin-top: 2%;
+}
+
+.stateName{
+  font-weight: 700;
+  font-size: large;
+  text-align: justify;
+}
+
+@media (max-width : 580px) {
+  .stateSelect{
+    margin-left: 4px;
+  }
+
+  form button{
+    margin-left: 4px;
+    margin-bottom: 2%;
+  }
+
+  .stateSelect{
+    width: 7rem;
+    margin-bottom: 2%;
+    margin-left: 12px;
+  }
+  .districtSelect{
+    margin-bottom: 2%;
+    width: 9rem;
+  }
+
+  .navbar-brand{
+    padding: 1%;
+    padding-bottom: 0;
+  }
+
+}
+
+th{
+  text-align: center;
+}
+
+td{
+  text-align: center;
+}
+
+.states-heading{
+  color: rgba(175, 47, 0, 0.87);
+  font-weight: bolder;
+  font-size: 2rem;
+}
+
+
+@media (max-width: 800px) {
+  .container-fluid{
+    margin-top: 2%;
+    padding-inline: 3%;
+  }
+}
+
+.break-line-strong{
+  border: 0.2px solid rgba(128, 128, 128, 0.418);
+  box-shadow: 0 0 0.1px 0.1px;
+}
+
+h6{
+  color: rgb(68, 68, 68);
+}
+
+.data-text:nth-of-type(1){
+  color: rgba(24, 27, 25, 0.918);
+}
+
+.data-text:nth-of-type(2){
+  color: rgba(31, 28, 28, 0.932);
+}
+
+.data-text:nth-of-type(3){
+  color: rgba(31, 28, 28, 0.932);
+}
+
+.data-text:nth-of-type(4){
+  color: rgba(31, 28, 28, 0.932);
+}
+
+.padding-primary{
+  padding:3% 9%;
+}
+
+.footer-icon{
+  color: grey;
+  margin: 4% 2%;
+  font-size: 3rem;
+}
+
+.footer-icon:hover{
+  color: rgba(0, 39, 97, 0.856);
+}
+
+.footer-text{
+  font-size: larger;
+}
+
+.name{
+  font-weight: 700;
+}
+
+.myChart{
+  margin-bottom: 5%;
+}
+
+
+/* main-section */
+
+.india-heading{
+  color: rgba(0, 5, 46, 0.842);
+  font-size: 4rem;
+}
+
+.state{
+  font-size: x-large;
+  color: rgb(184, 184, 0);
+}
+
+.population{
+  font-size: small;
+  color:#414345;
+  text-align: center;
+}
+
+
+.mt-5-custom{
+  margin-top: 10%;
+}
+
+
+.last{
+  border: 0.2px solid rgba(128, 128, 128, 0.418);
+  box-shadow: 0 0 0.1px 0.1px;
+}
+
+
+.data-box{
+  border-radius: 10px;
+  padding: 2%;
+  color: rgb(51, 48, 48);
+  border: 10px solid white;
+  font-weight: 700;
+  transition: 0.3s;
+  border-radius: 1.4rem;
+  font-size: 2.5rem;
+}
+
+.data-section{
+  margin:5%;
+}
+
+.cases{
+  background-image: linear-gradient(#de6262,#ffb88c);
+}
+
+.vaccination{
+  background-image: linear-gradient( #579cee80,#007bff30);
+}
+
+.vaccination:hover, .cases:hover{
+  font-size: 2.8rem;
+}
+
+.container-fluid{
+  padding-inline: 15%;
+} 
+
+
+@media (max-width: 992px) {
+  .container-fluid{
+    padding-inline: 6%;
+  }
+} 
+
+
+
+
